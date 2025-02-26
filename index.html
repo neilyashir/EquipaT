@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquiler de Herramientas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Alquiler de Herramientas</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#buscar">Buscar Herramientas</a></li>
+                    <li><a href="#publicar">Publicar Herramienta</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Bienvenido a nuestro servicio de alquiler de herramientas</h2>
+            <p>Encuentra y alquila herramientas de construcción de manera fácil y rápida.</p>
+            <div class="buttons">
+                <a href="#publicar" class="btn">Publicar herramienta</a>
+                <a href="#buscar" class="btn">Buscar herramientas</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="buscar" class="section">
+        <div class="container">
+            <h2>Buscar Herramientas</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar herramientas...">
+                <select>
+                    <option value="">Seleccionar categoría</option>
+                    <option value="mezcladora">Mezcladoras</option>
+                    <option value="guinche">Guinches</option>
+                    <option value="herramientas">Herramientas de mano</option>
+                </select>
+                <button>Buscar</button>
+            </div>
+            <ul class="herramientas-listado">
+                <li class="herramienta">
+                    <h3>Mezcladora</h3>
+                    <p>Descripción: Mezcladora de cemento de 200 litros.</p>
+                    <p>Precio: $20/día</p>
+                    <button>Contactar</button>
+                </li>
+                <li class="herramienta">
+                    <h3>Guinche</h3>
+                    <p>Descripción: Guinche eléctrico de 1000 kg.</p>
+                    <p>Precio: $30/día</p>
+                    <button>Contactar</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="publicar" class="section">
+        <div class="container">
+            <h2>Publicar Herramienta</h2>
+            <form>
+                <input type="text" placeholder="Nombre de la herramienta" required>
+                <textarea placeholder="Descripción" required></textarea>
+                <input type="number" placeholder="Precio" required>
+                <input type="file" required>
+                <button type="submit">Publicar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Alquiler de Herramientas</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
