@@ -1,3 +1,28 @@
+document.getElementById("publicar-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let formData = new FormData();
+    formData.append("nombre", document.getElementById("nombre").value);
+    formData.append("descripcion", document.getElementById("descripcion").value);
+    formData.append("precio", document.getElementById("precio").value);
+    formData.append("categoria", document.getElementById("categoria").value);
+    formData.append("imagen", document.getElementById("imagen").files[0]);
+
+    fetch("publicar_herramienta.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        if (data.status === "success") {
+            document.getElementById("publicar-form").reset();
+            cargarHerramientas(); // Recargar la lista
+        }
+    })
+    .catch(error => console.error("Error al publicar herramienta:", error));
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     cargarHerramientas();
 });
@@ -33,15 +58,19 @@ function mostrarHerramientas(herramientas) {
 function filtrarHerramientas() {
     const searchText = document.getElementById("search").value.toLowerCase();
     const selectedCategory = document.getElementById("filter-category").value;
+    const minPrice = parseFloat(document.getElementById("min-price").value) || 0;
+    const maxPrice = parseFloat(document.getElementById("max-price").value) || Infinity;
 
     fetch("get_herramientas.php")
         .then(response => response.json())
         .then(herramientas => {
             let herramientasFiltradas = herramientas.filter(herr => 
                 herr.nombre.toLowerCase().includes(searchText) &&
-                (selectedCategory === "" || herr.categoria === selectedCategory)
+                (selectedCategory === "" || herr.categoria === selectedCategory) &&
+                herr.precio >= minPrice && herr.precio <= maxPrice
             );
             mostrarHerramientas(herramientasFiltradas);
         })
         .catch(error => console.error("Error al filtrar herramientas:", error));
 }
+

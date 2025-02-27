@@ -33,50 +33,45 @@
             </div>
         </div>
     </section>
-
     <section id="buscar" class="section">
         <div class="container">
             <h2>Buscar Herramientas</h2>
             <div class="search-bar">
-                <input type="text" placeholder="Buscar herramientas...">
-                <select>
+                <input type="text" id="search" placeholder="Buscar herramientas...">
+                <select id="filter-category">
                     <option value="">Seleccionar categoría</option>
-                    <option value="mezcladora">Mezcladoras</option>
-                    <option value="guinche">Guinches</option>
-                    <option value="herramientas">Herramientas de mano</option>
+                    <option value="Construcción">Construcción</option>
+                    <option value="Mecánica">Mecánica</option>
+                    <option value="Electricidad">Electricidad</option>
+                    <option value="Jardinería">Jardinería</option>
                 </select>
-                <button>Buscar</button>
+                <input type="number" id="min-price" placeholder="Precio mínimo">
+                <input type="number" id="max-price" placeholder="Precio máximo">
+                <button onclick="filtrarHerramientas()">Buscar</button>
             </div>
-            <ul class="herramientas-listado">
-                <li class="herramienta">
-                    <h3>Mezcladora</h3>
-                    <p>Descripción: Mezcladora de cemento de 200 litros.</p>
-                    <p>Precio: $20/día</p>
-                    <button>Contactar</button>
-                </li>
-                <li class="herramienta">
-                    <h3>Guinche</h3>
-                    <p>Descripción: Guinche eléctrico de 1000 kg.</p>
-                    <p>Precio: $30/día</p>
-                    <button>Contactar</button>
-                </li>
-            </ul>
+            <ul id="herramientas-listado" class="herramientas-listado"></ul>
         </div>
     </section>
-
+    
     <section id="publicar" class="section">
         <div class="container">
             <h2>Publicar Herramienta</h2>
-            <form>
-                <input type="text" placeholder="Nombre de la herramienta" required>
-                <textarea placeholder="Descripción" required></textarea>
-                <input type="number" placeholder="Precio" required>
-                <input type="file" required>
+            <form id="publicar-form">
+                <input type="text" id="nombre" placeholder="Nombre de la herramienta" required>
+                <textarea id="descripcion" placeholder="Descripción" required></textarea>
+                <input type="number" id="precio" placeholder="Precio" required>
+                <select id="categoria" required>
+                    <option value="Construcción">Construcción</option>
+                    <option value="Mecánica">Mecánica</option>
+                    <option value="Electricidad">Electricidad</option>
+                    <option value="Jardinería">Jardinería</option>
+                </select>
+                <input type="file" id="imagen" required>
                 <button type="submit">Publicar</button>
             </form>
         </div>
     </section>
-
+    
     <footer>
         <p>&copy; 2025 Alquiler de Herramientas</p>
     </footer>
