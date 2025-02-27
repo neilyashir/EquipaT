@@ -1,21 +1,20 @@
 <?php
 header("Content-Type: application/json");
-include "db.php"; // Importamos la conexión
+include "db.php";
 
 $sql = "SELECT * FROM herramientas";
 $result = $conn->query($sql);
 
-$herramientas = [];
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $herramientas[] = $row;
-    }
+if (!$result) {
+    die(json_encode(["error" => "Error en la consulta: " . $conn->error]));
 }
 
-// Convertimos el array a JSON y lo mostramos
-echo json_encode($herramientas, JSON_PRETTY_PRINT);
+$herramientas = [];
 
-// Cerramos la conexión
+while ($row = $result->fetch_assoc()) {
+    $herramientas[] = $row;
+}
+
+echo json_encode($herramientas, JSON_PRETTY_PRINT);
 $conn->close();
 ?>

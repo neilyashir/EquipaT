@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
 async function cargarHerramientas() {
     try {
         const response = await fetch("get_herramientas.php");
-        const herramientas = await response.json();
+        const text = await response.text(); // Captura el texto bruto antes de convertir a JSON
+        console.log("Respuesta de get_herramientas.php:", text);
+
+        const herramientas = JSON.parse(text);
         mostrarHerramientas(herramientas);
     } catch (error) {
         console.error("Error al cargar las herramientas:", error);
